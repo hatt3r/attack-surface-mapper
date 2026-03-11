@@ -22,11 +22,16 @@ func main() {
 	fmt.Println("Target:", target)
 
 	openPorts := scanner.ScanTarget(target)
+	//calling scanner and scantarget function to get ports
 
-	fmt.Println("Open Portsdetected \n:")
+	fmt.Println("Open Ports detected:\n")
 	for _, port := range openPorts {
 		service := fingerprint.IdentifyService(port)
+		//calling fingerprint and identifyservice function to get service name used
+
 		risklevel := risk.Score(service)
+		//calling risk and score function to get predefined risk level for the service
+
 		fmt.Printf("Port: %d -> %s, Risk Level: %s\n", port, service, risklevel)
 	}
 }
